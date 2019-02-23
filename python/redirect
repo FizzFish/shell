@@ -1,0 +1,7 @@
+1.重定向print输出位置
+f = open('a.txt', 'w')
+old = sys.stdout
+sys.stdout = f
+print("Hello World")
+sys.stdout = old
+f.close()

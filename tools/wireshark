@@ -1,0 +1,24 @@
+1. Couldn’t run /usr/bin/dumpcap in child process: Permission denied
+添加wireshark组
+sudo groupadd wireshark
+添加当前用户到wireshark组
+sudo usermod -a -G wireshark current_user
+切换当前组
+newgrp wireshark
+
+修改/usr/bin/dumpcap所属组为wireshark
+sudo chgrp wireshark /usr/bin/dumpcap
+添加组内执行权限
+sudo chmod 754 /usr/bin/dumpcap
+
+Grant Capabilities
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/bin/dumpcap
+或
+sudo setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
+
+2. wireshark规则
+ip.src ip.dst
+tcp.port tcp.srcport tcp.dstport
+tcp udp arp http icmp (not ip)
+
+

@@ -1,0 +1,46 @@
+基本语法:$(selector).action()
+	$(this).hide()
+	$("p").hide()
+	$("p.test).hide() 隐藏class="test"的<p>
+	$("#test").hide() id="test"
+
+<script>
+$(document).ready(function(){
+$("p").click(function(){
+$(this).hide();
+})
+})
+</script>
+
+DOM事件
+click dbclick mouseenter mouseleave
+keypress keydown keyup hover
+submit change focus blur
+load resize scroll unload
+
+jquery效果
+hide(speed, callback)/show() toggle()
+淡入/淡出；滑动；动画/停止；jquery链
+
+jquey捕获: $("#test").text() $("#test").html() $("#test").val() 
+			获取属性(key-value) $("#test").attr("href")
+
+jquery设置: 直接设置和回调函数设置
+
+append/preappend 被选元素内部
+before/after 被选元素外部
+创建元素: var txt="<p>text</p>";
+		  var txt=$("<p></p>").text("text");
+		  var txt=document.createElement("p"); txt.innerHTML="text";
+remove/empty remove可筛选
+操作css: addClass()/removeClass()/toggleClass()
+		 css(key, value)
+
+jquery遍历
+
+AJAX=JS+XML
+$load(url,data,callback)
+$get(url, function(data,status){})
+$post(url,{key:value},function(data,status){})
+
+

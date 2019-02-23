@@ -1,0 +1,3 @@
+1. from . import deb
+ .代表当前路径，from . import deb代表导入当前路径下的deb，这种形式只有在从其他路径引用时才成立，也即当前文件不包含main函数；
+ 与之对应的直接import deb，也是导入当前路径下的deb文件，然而这在main函数在其他路径下的情况是不成立的。

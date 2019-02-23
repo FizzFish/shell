@@ -1,0 +1,42 @@
+第一次握手：
+  tcp_v4_rcv->tcp_v4_do_rcv->tcp_rcv_state_process->tcp_v4_conn_request
+
+  int tcp_rcv_state_process(struct sock *sk, struct sk_buff *skb)
+    struct inet_connection_sock *icsk = inet_csk(sk);
+    struct tcphdr *th = tcp_hdr(skb);
+    switch(sk->sk_state){
+      case TCP_LISTEN:
+        if(th->syn){ //收到SYN包
+	  if(icsk->icsk_af_ops->conn_request(sk,skb) <0) //tcp_v4_conn_request
+	    return 1;
+
+  int tcp_v4_conn_request(struct sock *sk, struct sk_buff *skb)
+    /*Never answer to SYNs send to broadcast or multicast*/
+    return tcp_conn_request(&tcp_request_sock_ops, &tcp_request_sock_v4_ops, sk, skb);
+
+  int tcp_conn_request(***)
+    if(inet_csk_request_queue_is_full)//SYN队列已满
+	goto drop;
+    if(sk_acceptq_is_full(sk) && inet_csk_reqsk_queue_young(sk) > 1)
+	goto drop;
+    req = inet_reqsk_alloc(rsk_ops, sk, want_cookie); //分配连接请求块
+    send_synack(***) //发送SYN+ACK
+
+  /**判断SYN队列是否已满*/
+  static inline int inet_csk_reqsk_queue_is_full(const struct sock *sk)
+  {
+        return inet_csk_reqsk_queue_len(sk) >= sk->sk_max_ack_backlog;
+  }
+  static inline int inet_csk_reqsk_queue_len(const struct sock *sk)
+  {
+        return reqsk_queue_len(&inet_csk(sk)->icsk_accept_queue);
+  }
+  static inline int reqsk_queue_len(const struct request_sock_queue *queue)
+  {
+        return atomic_read(&queue->qlen);
+  }
+  
+  (&inet_csk(sk)->icsk_accept_queue)->qlen >= sk->sk_max_ack_backlog
+
+
+  

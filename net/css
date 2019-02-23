@@ -1,0 +1,91 @@
+背景
+background-color 背景色
+background-img:url('url')
+background-repeat
+
+文本
+color
+text-align: center, left, right
+text-decoration:none 移除下划线
+text-indent
+white-space:nowrap 禁用换行
+verical-align 垂直对齐
+text-indent: 首行缩进
+
+字体
+font-family 设置候选字体
+font-size px与em
+font-style: normal/italic/oblique
+font-weight: normal/lighter/bold
+font:italic bold 12px/30px Georgia,serif;
+{
+font: italic bold 12px arial;
+}
+
+链接
+a:link a:visited a:hover a:active
+text-decoration: none/underline
+background-color
+链接框
+
+列表
+list-style-type
+list-style-img: url('url')
+
+表格
+table
+tr
+th td
+
+盒子模型
+Margin, Border, Padding, Content = 外边距， 边框， 内边距， 内容
+
+边框
+border-style
+border-width
+轮廓
+outline-color
+outline-style
+outline-width
+外边框
+margin:上 右 下 左
+填充
+padding
+
+分组和嵌套
+.marked p{} 为所有class="marked"元素内的p元素指定格式
+p.marked{}  为所有class="marked"的p元素指定格式
+
+显示与可见性
+visibility:hidden 不可见但占空间
+display:none      不显示也不占空间
+
+定位
+static relative fixed absolute stiky
+
+Overflow
+visible hidden scroll auto inherit
+
+浮动
+float 尽量向某个方向移动
+clear 不允许某个方向出现移动元素
+
+居中
+text-align: center
+vertical-align: middle
+
+选择器
+div p
+div>p
+div+p
+div-p
+
+伪类与伪元素
+p:first-child
+p:first-line
+
+导航栏
+设置li格式
+
+
+

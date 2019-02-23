@@ -1,0 +1,8 @@
+server端的半连接队列(SYN队列)：
+  为每个client创建一个strut request_sock条目；向client发送SYN+ACK；当再次收到client的ACK时，转换为ESTABLISHED状态。
+  SYN队列大小=max(64, /proc/sys/net/ipv4/tcp_max_syn_backlog)
+  如果没有收到client的ACK回复，那么server会进行net.ipv4.tcp_synack_retries次重发SYN-ACK包（默认5次，1+2+4+8+16+32=61s）。
+  当SYN队列满（SYN攻击）时，server端会丢弃新来的SYN包，client端显示timeout。
+
+accept队列存储ESTABLISHED状态的连接，当队列满时由sys.net.ipv4.tcp_abort_on_overflow决定向client返回内容（read timeout或connect reset by peer）
+

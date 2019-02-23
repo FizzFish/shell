@@ -1,0 +1,8 @@
+1.mysql允许远程登录
+a./etc/mysql/my.cnf 修改bind-address为0.0.0.0(原来是127.0.0.1)
+b.mysql -u root -p登录;
+  use mysql;
+  update user set host='%' where user = 'root';
+  flush privileges;
+
+
